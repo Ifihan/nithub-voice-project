@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submitted</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='complete.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="checkmark-container">
+            <div class="checkmark">
+                <svg viewBox="0 0 52 52">
+                    <path d="M14 27l7 7 16-16" />
+                </svg>
+            </div>
+        </div>
+
+        <h1>Submitted</h1>
+
+        <p class="message">
+            <span id="submissionMessage">Your recordings have been submitted successfully.</span><br>
+            Thank you for your contribution.
+        </p>
+
+        <div class="btn-container">
+            <button onclick="sessionStorage.clear(); window.location.href='/'">Record More</button>
+        </div>
+
+        <div class="footer-note">
+            You can continue recording or return anytime<br>
+            to contribute more voice samples.
+        </div>
+    </div>
+
+    <script>
+        // Display recording count from session storage
+        document.addEventListener('DOMContentLoaded', () => {
+            const count = sessionStorage.getItem('recordingCount') || '0';
+            const messageSpan = document.getElementById('submissionMessage');
+
+            if (count === '0') {
+                messageSpan.textContent = 'No recordings were submitted.';
+            } else if (count === '1') {
+                messageSpan.textContent = '1 recording submitted successfully.';
+            } else {
+                messageSpan.textContent = `${count} recordings submitted successfully.`;
+            }
+        });
+    </script>
+</body>
+</html>

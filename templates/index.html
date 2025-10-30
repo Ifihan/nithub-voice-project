@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Recording</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div id="consentModal" class="modal">
+        <div class="modal-content">
+            <h2>Consent to Participate</h2>
+            <p>By using this audio recording application, you consent to the following:</p>
+            <ul>
+                <li>Your voice recordings will be collected and stored for research purposes</li>
+                <li>The recordings may be used to improve AI and speech recognition systems</li>
+                <li>Your participation is voluntary and you may stop at any time</li>
+                <li>The data collected will be handled in accordance with privacy regulations</li>
+            </ul>
+            <p><strong>By clicking "I Agree", you confirm that you understand and consent to these terms.</strong></p>
+            <div class="modal-buttons">
+                <button class="btn-agree" id="agreeButton">I Agree</button>
+                <button class="btn-decline" id="declineButton">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="project-title">NITHUB AI PROJECT</div>
+            <h1>Audio Recording</h1>
+            <div class="stats">
+                <span class="stats-number" id="recordingCount">0</span> <span id="recordingLabel">recordings done</span>
+            </div>
+        </div>
+
+        <div class="prompt-container">
+            <p class="prompt-text" id="promptText">Loading prompt...</p>
+        </div>
+
+        <div class="recording-controls">
+            <div class="recording-status" id="recordingStatus"></div>
+            <button class="record-button" id="recordButton">
+                <div class="record-icon"></div>
+            </button>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-save" id="saveButton" disabled>Try Again</button>
+            <button class="btn-next" id="nextButton" disabled>Next</button>
+            <button class="btn-submit" id="submitButton">Submit</button>
+        </div>
+
+        <div id="message"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #000000;
+}
+
+.container {
+    max-width: 700px;
+    width: 100%;
+    padding: 60px 40px;
+}
+
+.modal {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 50px 40px;
+    border: 2px solid #000000;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #000000;
+}
+
+.modal-content p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.modal-content ul {
+    margin: 20px 0 20px 30px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #333333;
+}
+
+.modal-content ul li {
+    margin-bottom: 10px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.btn-agree {
+    flex: 1;
+    padding: 16px;
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-agree:hover {
+    background: #333333;
+    border-color: #333333;
+}
+
+.btn-decline {
+    flex: 1;
+    padding: 16px;
+    background: #ffffff;
+    color: #000000;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-decline:hover {
+    background: #f5f5f5;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.project-title {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #000000;
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+    color: #000000;
+}
+
+.stats {
+    font-size: 13px;
+    font-weight: 400;
+    color: #666666;
+    letter-spacing: 0.2px;
+}
+
+.stats-number {
+    font-weight: 600;
+    color: #000000;
+}
+
+.prompt-container {
+    background: #ffffff;
+    padding: 50px 40px;
+    margin-bottom: 50px;
+    text-align: center;
+    border-radius: 12px;
+    border: 2px solid #000000;
+    position: relative;
+}
+
+.prompt-text {
+    font-size: 28px;
+    color: #000000;
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+}
+
+.recording-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.recording-status {
+    min-height: 24px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #666666;
+}
+
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.recording-indicator {
+    width: 8px;
+    height: 8px;
+    background: #000000;
+    border-radius: 50%;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+}
+
+.record-button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #000000;
+    border: 3px solid #000000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.record-button::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid #000000;
+    transform: scale(1.2);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.record-button:hover::before {
+    transform: scale(1.3);
+    opacity: 0.3;
+}
+
+.record-button:hover {
+    transform: scale(1.05);
+}
+
+.record-button:active {
+    transform: scale(0.95);
+}
+
+.record-button.recording {
+    background: #ffffff;
+    border-color: #000000;
+    animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+
+.record-icon {
+    width: 24px;
+    height: 24px;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.record-button.recording .record-icon {
+    background: #000000;
+    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+}
+
+.button-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 16px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 8px;
+    text-transform: uppercase;
+    border: 2px solid #000000;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    border-color: #e0e0e0;
+}
+
+.btn-save {
+    background: #000000;
+    color: #ffffff;
+    border-color: #000000;
+}
+
+.btn-save:hover:not(:disabled) {
+    background: #333333;
+    border-color: #333333;
+}
+
+.btn-next {
+    background: #ffffff;
+    color: #000000;
+    border-color: #000000;
+}
+
+.btn-next:hover:not(:disabled) {
+    background: #000000;
+    color: #ffffff;
+}
+
+.btn-submit {
+    background: #ffffff;
+    color: #000000;
+    border-color: #000000;
+}
+
+.btn-submit:hover:not(:disabled) {
+    background: #000000;
+    color: #ffffff;
+}
+
+.message {
+    text-align: center;
+    padding: 16px;
+    margin-top: 30px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    border-radius: 8px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message.success {
+    background: #000000;
+    color: #ffffff;
+}
+
+.message.error {
+    background: #ffffff;
+    color: #000000;
+    border: 2px solid #000000;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .prompt-container {
+        padding: 40px 30px;
+        margin-bottom: 40px;
+    }
+
+    .prompt-text {
+        font-size: 22px;
+    }
+
+    .record-button {
+        width: 80px;
+        height: 80px;
+    }
+
+    .button-group {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    button {
+        padding: 14px 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 16px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .prompt-container {
+        padding: 30px 20px;
+    }
+
+    .prompt-text {
+        font-size: 18px;
+    }
+
+    .stats {
+        font-size: 12px;
+    }
+}
